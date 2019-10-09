@@ -1,15 +1,6 @@
 import { decorate, observable, computed } from "mobx";
-import axios from "axios";
-import React from "react";
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
-});
 
-
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
-});
-
+import { instance } from "./instance";
 
 class CategoriesStore {
   categories = [];
@@ -19,7 +10,7 @@ class CategoriesStore {
 
   fetchCategories = async () => {
     try {
-      const res = await instance.get("schools/categories/");
+      const res = await instance.get("schoollist/categorylist/");
       const categories = res.data;
       this.categories = categories;
       this.loading = false;
@@ -29,7 +20,7 @@ class CategoriesStore {
   };
   fetchSchools = async () => {
     try {
-      const res = await instance.get("schools/");
+      const res = await instance.get("schoollist/");
       const schools = res.data;
       this.schools = schools;
       this.loading = false;
@@ -40,7 +31,7 @@ class CategoriesStore {
 
   fetchSubjects = async () => {
     try {
-      const res = await instance.get("schools/categories/subjects/");
+      const res = await instance.get("schoollist/categorylist/subjectlist/");
       const subjects = res.data;
       this.subjects = subjects;
       this.loading = false;
@@ -58,10 +49,5 @@ decorate(CategoriesStore, {
 
 const categoriesStore = new CategoriesStore();
 // categoriesStore.fetchCategories();
-
-
-const categoriesStore = new CategoriesStore();
-// categoriesStore.fetchCategories();
-
 
 export default categoriesStore;

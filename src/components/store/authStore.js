@@ -1,7 +1,6 @@
 import { decorate, observable } from "mobx";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
-import axios from "axios";
 
 class AuthStore {
   user = null;
@@ -9,11 +8,11 @@ class AuthStore {
   setUser = token => {
     if (token) {
       localStorage.setItem("myToken", token);
-      axios.defaults.headers.common.Authorization = `jwt ${token}`;
+      instance.defaults.headers.common.Authorization = `jwt ${token}`;
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
     } else {
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem("myToken");
       this.user = null;
     }
