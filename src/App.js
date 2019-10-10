@@ -6,9 +6,10 @@ import { observer } from "mobx-react";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import SchoolList from "./components/SchoolList";
-import CategoryList from "./components/SchoolList/CategoryList";
-import SubjectList from "./components/SchoolList/CategoryList/SubjectList";
+
 import Questionlist from "./components/Question/QuestionList";
+import CategoryList from "./components/CategoryList";
+import SubjectList from "./components/CategoryList/SubjectList";
 
 // Store
 import authStore from "./components/store/authStore";
@@ -26,12 +27,9 @@ function App() {
       <Route path="/login/" component={Login} />
       <Route path="/signup/" component={Signup} />
       <Route path="/schoollist/" component={SchoolList} />
-      <Route path="/schoollist/:categorylist" component={CategoryList} />
       <Route path="/questionlist/:subjectID" component={Questionlist} />
-      <Route
-        path="/schoollist/categorylist/:subjectlist?"
-        component={SubjectList}
-      />
+      <Route path="/categorylist/:schoolID?" component={CategoryList} />
+      <Route path="/subjectlist/:subjectID?" component={SubjectList} />
     </Switch>
   );
 }

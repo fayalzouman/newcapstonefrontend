@@ -1,4 +1,4 @@
-import { decorate, observable, computed } from "mobx";
+import { decorate, observable } from "mobx";
 
 import { instance } from "./instance";
 
@@ -6,18 +6,14 @@ class CategoriesStore {
   categories = [];
   subjects = [];
   schools = [];
+  school = null;
   loading = true;
 
-  fetchCategories = async () => {
-    try {
-      const res = await instance.get("schoollist/categorylist/");
-      const categories = res.data;
-      this.categories = categories;
-      this.loading = false;
-    } catch (error) {
-      console.error(error);
-    }
+  fetchSchoolByID = schoolID => {
+    this.school = this.schools.find(school => school.id === schoolID);
+    console.log("[categoriesStore:]", this.school);
   };
+
   fetchSchools = async () => {
     try {
       const res = await instance.get("schoollist/");
@@ -29,9 +25,9 @@ class CategoriesStore {
     }
   };
 
-  fetchSubjects = async () => {
+  fetchSubjects = async categoryID => {
     try {
-      const res = await instance.get("schoollist/categorylist/subjectlist/");
+      const res = await instance.get(`${categoryID}/subjectlist/`);
       const subjects = res.data;
       this.subjects = subjects;
       this.loading = false;
@@ -40,6 +36,7 @@ class CategoriesStore {
     }
   };
 }
+
 decorate(CategoriesStore, {
   loading: observable,
   categories: observable,
