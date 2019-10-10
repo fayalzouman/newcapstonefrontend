@@ -7,7 +7,7 @@ import SchoolCard from "./SchoolCard";
 import categoriesStore from "../store/categoriesStore";
 
 const SchoolList = () => {
-  const schoolCards = categoriesStore.fetchSchools.map(school => (
+  const schoolCards = categoriesStore.schools.map(school => (
     <SchoolCard key={school.id} school={school} />
   ));
 

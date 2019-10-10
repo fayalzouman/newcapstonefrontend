@@ -8,12 +8,16 @@ class QuestionStore {
   loading = true;
 
   fetchQuestionsAnswers = async () => {
+    // pass the subject id as an atgument and add it to the get request
     try {
-      const res = await instance.get("questions/<int:questions_id>/");
+      const res = await instance.get("questions/subjectID");
       const questions = res.data;
       this.questions = questions;
       this.loading = false;
-    } catch (err) {}
+      console.log("QUESTIONS");
+    } catch (err) {
+      console.log(err.response.data);
+    }
   };
 }
 
@@ -23,6 +27,5 @@ decorate(QuestionStore, {
 });
 
 const questionStore = new QuestionStore();
-questionStore.fetchQuestionsAnswers();
 
 export default questionStore;

@@ -7,7 +7,7 @@ import CategoryCard from "./CategoryCard";
 import categoriesStore from "../../store/categoriesStore";
 
 const CategoryList = () => {
-  const categoryCards = categoriesStore.fetchCategories.map(category => (
+  const categoryCards = categoriesStore.categories.map(category => (
     <CategoryCard key={category.id} category={category} />
   ));
 

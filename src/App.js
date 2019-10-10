@@ -26,8 +26,8 @@ function App() {
       <Route path="/login/" component={Login} />
       <Route path="/signup/" component={Signup} />
       <Route path="/schoollist/" component={SchoolList} />
-      <Route path="/schoollist/:categorylist?" component={CategoryList} />
-      <Route path="/questionlist/" component={Questionlist} />
+      <Route path="/schoollist/:categorylist" component={CategoryList} />
+      <Route path="/questionlist/:subjectID" component={Questionlist} />
       <Route
         path="/schoollist/categorylist/:subjectlist?"
         component={SubjectList}

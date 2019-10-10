@@ -3,11 +3,20 @@ import { observer } from "mobx-react";
 
 // Components
 import QuestionCard from "./QuestionCard";
-import questionStore from "../store/questionStore";
-// Store
+import loading from "../../Loading";
 
-const QuestionList = () => {
-  const questionCards = questionStore.fetchQuestionsAnswers.map(question => (
+// Store
+import questionStore from "../store/questionStore";
+import Loading from "../../Loading";
+
+const QuestionList = props => {
+  let subjectID = props.match.params.subjectID;
+  if (loading) {
+    return <Loading />;
+  }
+  // call the questionsfetch methos and pass it the id
+  //dont forget tot add a loading condition
+  const questionCards = questionStore.questions.map(question => (
     <QuestionCard key={question.id} question={question} />
   ));
 

@@ -48,6 +48,6 @@ decorate(CategoriesStore, {
 });
 
 const categoriesStore = new CategoriesStore();
-// categoriesStore.fetchCategories();
+categoriesStore.fetchSchools();
 
 export default categoriesStore;
