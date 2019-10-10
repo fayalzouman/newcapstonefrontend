@@ -8,10 +8,12 @@ import Signup from "./components/Signup";
 import SchoolList from "./components/SchoolList";
 import CategoryList from "./components/SchoolList/CategoryList";
 import SubjectList from "./components/SchoolList/CategoryList/SubjectList";
+import Questionlist from "./components/Question/QuestionList";
 
 // Store
 import authStore from "./components/store/authStore";
 import categoriesStore from "./components/store/categoriesStore";
+import questionStore from "./components/store/questionStore";
 
 function App() {
   // const getView = () => {
@@ -25,6 +27,7 @@ function App() {
       <Route path="/signup/" component={Signup} />
       <Route path="/schoollist/" component={SchoolList} />
       <Route path="/schoollist/:categorylist?" component={CategoryList} />
+      <Route path="/questionlist/" component={Questionlist} />
       <Route
         path="/schoollist/categorylist/:subjectlist?"
         component={SubjectList}
