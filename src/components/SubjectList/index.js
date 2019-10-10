@@ -7,7 +7,7 @@ import categoriesStore from "../../../store/categoriesStore";
 // Store
 
 const SubjectList = () => {
-  const subjectCards = categoriesStore.fetchSubjects.map(subject => (
+  const subjectCards = categoriesStore.subjects.map(subject => (
     <SubjectCard key={subject.id} subject={subject} />
   ));
 

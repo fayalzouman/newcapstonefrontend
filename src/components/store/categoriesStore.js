@@ -8,9 +8,9 @@ class CategoriesStore {
   schools = [];
   loading = true;
 
-  fetchCategories = async () => {
+  fetchCategories = async schoolID => {
     try {
-      const res = await instance.get("schoollist/categorylist/");
+      const res = await instance.get("categorylist/");
       const categories = res.data;
       this.categories = categories;
       this.loading = false;
@@ -18,6 +18,7 @@ class CategoriesStore {
       console.error(error);
     }
   };
+
   fetchSchools = async () => {
     try {
       const res = await instance.get("schoollist/");
@@ -31,7 +32,7 @@ class CategoriesStore {
 
   fetchSubjects = async () => {
     try {
-      const res = await instance.get("schoollist/categorylist/subjectlist/");
+      const res = await instance.get("subjectlist/");
       const subjects = res.data;
       this.subjects = subjects;
       this.loading = false;
@@ -40,6 +41,7 @@ class CategoriesStore {
     }
   };
 }
+
 decorate(CategoriesStore, {
   loading: observable,
   categories: observable,

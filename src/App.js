@@ -6,9 +6,10 @@ import { observer } from "mobx-react";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import SchoolList from "./components/SchoolList";
-import CategoryList from "./components/SchoolList/CategoryList";
-import SubjectList from "./components/SchoolList/CategoryList/SubjectList";
+
 import Questionlist from "./components/Question/QuestionList";
+import CategoryList from "./components/CategoryList";
+import SubjectList from "./components/CategoryList/SubjectList";
 
 // Store
 import authStore from "./components/store/authStore";

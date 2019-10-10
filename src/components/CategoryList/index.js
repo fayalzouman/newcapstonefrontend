@@ -6,7 +6,9 @@ import CategoryCard from "./CategoryCard";
 // Store
 import categoriesStore from "../../store/categoriesStore";
 
-const CategoryList = () => {
+const CategoryList = props => {
+  // vfetch id from the url and pass it to fetchCategories
+  //dont forget loading
   const categoryCards = categoriesStore.categories.map(category => (
     <CategoryCard key={category.id} category={category} />
   ));
