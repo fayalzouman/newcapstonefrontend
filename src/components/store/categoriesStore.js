@@ -1,4 +1,4 @@
-import { decorate, observable, computed } from "mobx";
+import { decorate, observable } from "mobx";
 
 import { instance } from "./instance";
 
