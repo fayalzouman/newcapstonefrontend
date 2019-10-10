@@ -28,7 +28,7 @@ function App() {
       <Route path="/signup/" component={Signup} />
       <Route path="/schoollist/" component={SchoolList} />
       <Route path="/questionlist/:subjectID" component={Questionlist} />
-      <Route path="/categorylist/:categoryID?" component={CategoryList} />
+      <Route path="/categorylist/:schoolID?" component={CategoryList} />
       <Route path="/subjectlist/:subjectID?" component={SubjectList} />
     </Switch>
   );

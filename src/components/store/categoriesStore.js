@@ -6,17 +6,12 @@ class CategoriesStore {
   categories = [];
   subjects = [];
   schools = [];
+  school = null;
   loading = true;
 
-  fetchCategories = async schoolID => {
-    try {
-      const res = await instance.get("categorylist/");
-      const categories = res.data;
-      this.categories = categories;
-      this.loading = false;
-    } catch (error) {
-      console.error(error);
-    }
+  fetchSchoolByID = schoolID => {
+    this.school = this.schools.find(school => school.id === schoolID);
+    console.log("[categoriesStore:]", this.school);
   };
 
   fetchSchools = async () => {
@@ -30,9 +25,9 @@ class CategoriesStore {
     }
   };
 
-  fetchSubjects = async () => {
+  fetchSubjects = async categoryID => {
     try {
-      const res = await instance.get("subjectlist/");
+      const res = await instance.get(`${categoryID}/subjectlist/`);
       const subjects = res.data;
       this.subjects = subjects;
       this.loading = false;

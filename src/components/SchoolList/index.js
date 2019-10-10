@@ -6,7 +6,7 @@ import SchoolCard from "./SchoolCard";
 // Store
 import categoriesStore from "../store/categoriesStore";
 
-const SchoolList = () => {
+const SchoolList = props => {
   const schoolCards = categoriesStore.schools.map(school => (
     <SchoolCard key={school.id} school={school} />
   ));
