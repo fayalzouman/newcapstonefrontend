@@ -26,10 +26,11 @@ class CategoriesStore {
   };
 
   fetchSubjects = async categoryID => {
+    this.loading = true;
     try {
-      const res = await instance.get(`${categoryID}/subjectlist/`);
+      const res = await instance.get(`category/${categoryID}/`);
       const subjects = res.data;
-      this.subjects = subjects;
+      this.subjects = subjects.subjects;
       this.loading = false;
     } catch (error) {
       console.error(error);

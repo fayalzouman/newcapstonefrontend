@@ -9,7 +9,8 @@ import SchoolList from "./components/SchoolList";
 
 import Questionlist from "./components/Question/QuestionList";
 import CategoryList from "./components/CategoryList";
-import SubjectList from "./components/CategoryList/SubjectList";
+import SubjectList from "./components/SubjectList/index";
+// "./components/CategoryList/SubjectList";
 
 // Store
 import authStore from "./components/store/authStore";
@@ -29,7 +30,7 @@ function App() {
       <Route path="/schoollist/" component={SchoolList} />
       <Route path="/questionlist/:subjectID" component={Questionlist} />
       <Route path="/categorylist/:schoolID?" component={CategoryList} />
-      <Route path="/subjectlist/:subjectID?" component={SubjectList} />
+      <Route path="/subjectlist/:categoryID?" component={SubjectList} />
     </Switch>
   );
 }
