@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // Components
@@ -6,18 +6,24 @@ import SchoolCard from "./SchoolCard";
 // Store
 import categoriesStore from "../store/categoriesStore";
 
-const SchoolList = props => {
-  const schoolCards = categoriesStore.schools.map(school => (
-    <SchoolCard key={school.id} school={school} />
-  ));
+class SchoolList extends Component {
+  componentDidMount() {
+    console.log(this.props.match.params.schoolID);
+    categoriesStore.fetchSchools(this.props.match.params.schoolID);
+  }
 
-  return (
-    <div>
-      <h3>Schools</h3>
-      {/* <SearchBar store={authorStore} /> */}
-      <div className="row">{schoolCards}</div>
-    </div>
-  );
-};
-
+  render() {
+    console.log(categoriesStore.schools);
+    const schoolCards = categoriesStore.schools.map(school => (
+      <SchoolCard key={school.id} school={school} />
+    ));
+    return (
+      <div>
+        <h3>Schools</h3>
+        {/* <SearchBar store={authorStore} /> */}
+        <div className="row">{schoolCards}</div>
+      </div>
+    );
+  }
+}
 export default observer(SchoolList);
