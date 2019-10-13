@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 // Components
 import SubjectCard from "./SubjectCard";
 import categoriesStore from "../store/categoriesStore";
+import Loading from "../../Loading";
 // Store
 
 class SubjectList extends Component {
@@ -12,9 +13,9 @@ class SubjectList extends Component {
     categoriesStore.fetchSubjects(this.props.match.params.categoryID);
   }
   render() {
-    // if (categoriesStore.loading) {
-    //   return <div>Loading</div>;
-    // }
+    if (categoriesStore.loading) {
+      return <Loading />;
+    }
     console.log(categoriesStore.subjects);
     const subjectCards = categoriesStore.subjects.map(subject => (
       <SubjectCard key={subject.id} subject={subject} />
