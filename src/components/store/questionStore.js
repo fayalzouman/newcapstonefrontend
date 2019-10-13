@@ -7,16 +7,16 @@ class QuestionStore {
 
   loading = true;
 
-  fetchQuestionsAnswers = async () => {
-    // pass the subject id as an atgument and add it to the get request
+  fetchQuestionsAnswers = async subjectID => {
+    console.log(subjectID);
     try {
-      const res = await instance.get("questions/subjectID");
-      const questions = res.data;
-      this.questions = questions;
+      const res = await instance.get(`questions/${subjectID}/`);
+      const subject = res.data;
+      this.questions = subject.questions;
       this.loading = false;
       console.log("QUESTIONS");
-    } catch (err) {
-      console.log(err.response.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 }
