@@ -5,12 +5,15 @@ import { observer } from "mobx-react";
 import CategoryCard from "./CategoryCard";
 // Store
 import categoriesStore from "../store/categoriesStore";
+import Loading from "../../Loading";
 
 const CategoryList = props => {
   // vfetch id from the url and pass it to fetchCategories
   const schoolID = props.match.params.schoolID;
+  console.log("CAtegorrrries", schoolID);
   categoriesStore.fetchSchoolByID(schoolID);
-  //dont forget loading
+  if (categoriesStore.loading) return <Loading />;
+
   const categoryCards = categoriesStore.school.categories.map(category => (
     <CategoryCard key={category.id} category={category} />
   ));

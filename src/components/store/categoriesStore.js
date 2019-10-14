@@ -11,13 +11,11 @@ class CategoriesStore {
   subject = null;
 
   fetchSchoolByID = schoolID => {
-    this.school = this.schools.find(school => school.id === schoolID);
-    console.log("[categoriesStore:]", this.school);
+    this.school = this.schools.find(school => +school.id === +schoolID);
   };
 
   fetchSubjectByID = subjectID => {
-    this.subject = this.subjects.find(subject => subject.id === subjectID);
-    console.log("[categoriesStore:]", this.subject);
+    this.subject = this.subjects.find(subject => +subject.id === +subjectID);
   };
 
   fetchSchools = async () => {
@@ -32,11 +30,11 @@ class CategoriesStore {
   };
 
   fetchSubjects = async categoryID => {
-    this.loading = true;
     try {
-      const res = await instance.get(`category/${categoryID}/`);
+      const res = await instance.get(`subjectlist/${categoryID}/`);
       const subjects = res.data;
-      this.subjects = subjects.subjects; //is this correct? check postman
+      this.subjects = subjects;
+      console.log("SUBJJJECTS IN STORE", this.subjects);
       this.loading = false;
     } catch (error) {
       console.error(error);

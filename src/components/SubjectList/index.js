@@ -9,11 +9,10 @@ import Loading from "../../Loading";
 
 class SubjectList extends Component {
   async componentDidMount() {
-    console.log(this.props.match.params.categoryID);
     await categoriesStore.fetchSubjects(this.props.match.params.categoryID);
   }
   render() {
-    if (categoriesStore.loading) {
+    if (!categoriesStore.subjects) {
       return <Loading />;
     }
     console.log(categoriesStore.subjects);

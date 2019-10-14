@@ -9,7 +9,9 @@ function CategoryCard({ category }) {
         <div className="image">
           <img className="card-img-top img-fluid" src={category.imageUrl} />
         </div>
-        <div className="card-body"></div>
+        <div className="card-body">
+          <h3>{category.category}</h3>
+        </div>
       </Link>
     </div>
   );
