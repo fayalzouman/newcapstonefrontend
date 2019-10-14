@@ -11,7 +11,7 @@ const CategoryList = props => {
   const schoolID = props.match.params.schoolID;
   categoriesStore.fetchSchoolByID(schoolID);
   //dont forget loading
-  const categoryCards = categoriesStore.categories.map(category => (
+  const categoryCards = categoriesStore.school.categories.map(category => (
     <CategoryCard key={category.id} category={category} />
   ));
 

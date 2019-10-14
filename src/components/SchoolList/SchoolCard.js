@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 import categoriesStore from "../store/categoriesStore";
 
-function SchoolCard(props) {
-  const schoolID = props.match.params.schoolID;
-  const school = categoriesStore.fetchSchools(schoolID);
+function SchoolCard({ school }) {
   return (
     <div className="col-lg-4 col-md-6 col-12">
       <Link to={`/categorylist/${school.id}`} className="card">
