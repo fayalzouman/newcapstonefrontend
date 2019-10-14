@@ -9,23 +9,22 @@ import Loading from "../../Loading";
 import questionStore from "../store/questionStore";
 
 class QuestionList extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     console.log(this.props.match.params.subjectID);
-    questionStore.fetchQuestionsAnswers(this.props.match.params.subjectID);
+    await questionStore.fetchQuestionsAnswers(
+      this.props.match.params.subjectID
+    );
   }
 
-  // const QuestionList = props => {
-  //   let subjectID = props.match.params.subjectID;
   render() {
     if (questionStore.loading) {
       return <Loading />;
     }
-    // call the questionsfetch methos and pass it the id
-    //dont forget tot add a loading condition
+    // call the questionsfetch method and pass it the id
     console.log(questionStore.questions);
 
-    const questionCards = questionStore.questions.map(questions => (
-      <QuestionCard key={questions.id} question={questions} />
+    const questionCards = questionStore.questions.map(question => (
+      <QuestionCard key={question.id} question={question} />
     ));
 
     return (

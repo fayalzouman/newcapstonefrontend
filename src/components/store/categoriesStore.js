@@ -3,15 +3,21 @@ import { decorate, observable } from "mobx";
 import { instance } from "./instance";
 
 class CategoriesStore {
-  categories = [];
+  // categories = [];
   subjects = [];
   schools = [];
   school = null;
   loading = true;
+  subject = null;
 
   fetchSchoolByID = schoolID => {
     this.school = this.schools.find(school => school.id === schoolID);
     console.log("[categoriesStore:]", this.school);
+  };
+
+  fetchSubjectByID = subjectID => {
+    this.subject = this.subjects.find(subject => subject.id === subjectID);
+    console.log("[categoriesStore:]", this.subject);
   };
 
   fetchSchools = async () => {
@@ -30,7 +36,7 @@ class CategoriesStore {
     try {
       const res = await instance.get(`category/${categoryID}/`);
       const subjects = res.data;
-      this.subjects = subjects.subjects;
+      this.subjects = subjects.subjects; //is this correct? check postman
       this.loading = false;
     } catch (error) {
       console.error(error);
@@ -40,9 +46,11 @@ class CategoriesStore {
 
 decorate(CategoriesStore, {
   loading: observable,
-  categories: observable,
+  // categories: observable,
   subjects: observable,
-  schools: observable
+  subject: observable,
+  schools: observable,
+  school: observable
 });
 
 const categoriesStore = new CategoriesStore();

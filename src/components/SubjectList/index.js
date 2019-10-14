@@ -8,9 +8,9 @@ import Loading from "../../Loading";
 // Store
 
 class SubjectList extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     console.log(this.props.match.params.categoryID);
-    categoriesStore.fetchSubjects(this.props.match.params.categoryID);
+    await categoriesStore.fetchSubjects(this.props.match.params.categoryID);
   }
   render() {
     if (categoriesStore.loading) {
