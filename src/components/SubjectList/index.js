@@ -23,7 +23,6 @@ class SubjectList extends Component {
     return (
       <div>
         <h3>Subjects</h3>
-        {/* <SearchBar store={authorStore} /> */}
         <div className="row">{subjectCards}</div>
       </div>
     );

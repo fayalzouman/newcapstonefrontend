@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
 
 // Components
-// import BookTable from "./BookTable";
 
 // Stores
 import categoriesStore from "../store/categoriesStore";
@@ -24,8 +24,13 @@ class SubjectDetail extends Component {
           {/* <img
             src={author.imageUrl}
             className="img-thumbnail img-fluid"
-            alt={authorName} */}
-          /> // add a button thst takes you to the question list
+            alt={authorName} />*/}
+          <Link
+            to={`/questionlist/${subject.id}`}
+            className="btn btn-success my-2 my-sm-0"
+          >
+            Take Exam{" "}
+          </Link>
         </div>
       </div>
     );
