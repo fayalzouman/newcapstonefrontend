@@ -21,6 +21,13 @@ class SubjectDetail extends Component {
       <div>
         <div>
           <h3 style={{ color: "white" }}>{subject.subject_name}</h3>
+          <a
+            className="btn btn-success my-2 my-sm-0"
+            href="https://youtube.com/khanacademy"
+          >
+            Learn More
+          </a>
+
           {/* <img
             src={author.imageUrl}
             className="img-thumbnail img-fluid"

@@ -9,6 +9,7 @@ import {
   OptionRow,
   Button
 } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 
 // Components
 import QuestionCard from "./QuestionCard";
@@ -33,14 +34,13 @@ class QuestionList extends Component {
     );
   }
   handleSubmit = () => {
-    questionStore.calculatePoints(this.state);
+    questionStore.calculatePoints(this.state, this.props.history);
   };
 
   render() {
     if (!questionStore.questions) {
       return <Loading />;
     }
-    // call the questionsfetch method and pass it the id
     console.log(questionStore.questions);
     const questionCards = questionStore.questions.map(question => (
       <QuestionCard
