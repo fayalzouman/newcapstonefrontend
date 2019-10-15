@@ -1,32 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import {
-  Card,
-  Question,
-  Form,
-  Row,
-  Col,
-  OptionRow,
-  Button
-} from "react-bootstrap";
+import { Card, Form, Row, Col } from "react-bootstrap";
 import questionStore from "../store/questionStore";
 
 class QuestionCard extends Component {
   state = {
-    counter: 0
+    chosen: false
   };
   handleSelect = (event, answer) => {
+    this.setState({ chosen: true });
     if (answer.is_correct) {
-      let newValue = this.state.counter + 1;
-      this.setState({ counter: newValue });
+      this.props.addPoints();
     }
-    axios.post(
-      "http://127.0.0.1:8000/questionlist/<int:subject_id>/",
-      newValue
-    );
   };
-
   render() {
     const question = this.props.question;
     const answers = question.answers.map((answer, idx) => (
@@ -36,12 +22,13 @@ class QuestionCard extends Component {
         value={answer.option}
         name={question.id}
         key={idx}
+        disabled={this.state.chosen}
         id={`formHorizontalRadios${idx}`}
         onClick={event => this.handleSelect(event, answer)}
       />
     ));
     return (
-      <Card style={{ width: "18rem" }}>
+      <Card className="col-3 m-5" style={{ width: "18rem" }}>
         <Card.Body>
           {/* <Card.Title>{question.id}</Card.Title> */}
           <Card.Subtitle className="mb-2 text-muted">
@@ -49,14 +36,14 @@ class QuestionCard extends Component {
           </Card.Subtitle>
           <Card.Text>{question.question}</Card.Text>
         </Card.Body>
-        <fieldset>
-          <Form.Group as={Row}>
-            <Form.Label as="legend" column sm={2}>
-              Options
-            </Form.Label>
+        <Form.Group as={Row}>
+          <Form.Label as="legend" as={Row}>
+            Choose me
+          </Form.Label>
+          <div className="row mt-2">
             <Col sm={10}>{answers}</Col>
-          </Form.Group>
-        </fieldset>
+          </div>
+        </Form.Group>
       </Card>
     );
   }

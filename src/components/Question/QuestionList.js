@@ -18,12 +18,23 @@ import Loading from "../../Loading";
 import questionStore from "../store/questionStore";
 
 class QuestionList extends Component {
+  state = {
+    points: 0
+  };
+
+  addPoints = () => {
+    this.setState({ points: this.state.points + 1 });
+  };
+
   async componentDidMount() {
     console.log(this.props.match.params.subjectID);
     await questionStore.fetchQuestionsAnswers(
       this.props.match.params.subjectID
     );
   }
+  handleSubmit = () => {
+    questionStore.calculatePoints(this.state);
+  };
 
   render() {
     if (!questionStore.questions) {
@@ -32,20 +43,22 @@ class QuestionList extends Component {
     // call the questionsfetch method and pass it the id
     console.log(questionStore.questions);
     const questionCards = questionStore.questions.map(question => (
-      <QuestionCard key={question.id} question={question} />
+      <QuestionCard
+        addPoints={this.addPoints}
+        key={question.id}
+        question={question}
+      />
     ));
 
     return (
       <div>
         <h3>Questions</h3>
+
         <div className="row">{questionCards}</div>
-        <Button variant="primary" type="submit" onClick="handleSubmit">
+        <h3>Points: {this.state.points}</h3>
+        <Button variant="primary" onClick={this.handleSubmit}>
           Submit
         </Button>
-        {/* handleSubmit = event => {
-    event.preventDefault();
-    questionstore.postCard(this.state); */}
-        }
       </div>
     );
   }

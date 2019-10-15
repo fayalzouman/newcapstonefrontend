@@ -4,8 +4,15 @@ import { instance } from "./instance";
 
 class QuestionStore {
   questions = [];
-
+  points = 0;
   loading = true;
+
+  calculatePoints = async (obj, history) => {
+    obj.points = obj.points + this.points;
+    const res = await instance.post(`profileupdate/`, obj);
+    this.points = res.data.points;
+    history.replace("/profile");
+  };
 
   fetchQuestionsAnswers = async subjectID => {
     console.log(subjectID);
