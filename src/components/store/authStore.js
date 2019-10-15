@@ -1,7 +1,7 @@
 import { decorate, observable } from "mobx";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
-
+import ProfileStore from "./profileStore";
 class AuthStore {
   user = null;
 
@@ -11,6 +11,7 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `jwt ${token}`;
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
+      ProfileStore.fetchProfile();
     } else {
       delete instance.defaults.headers.common.Authorization;
       localStorage.removeItem("myToken");
@@ -25,9 +26,9 @@ class AuthStore {
       const res = await instance.post("login/", userData);
       const user = res.data;
       this.setUser(user.token);
-      history.replace("/");
+      history.replace("/profile");
     } catch (err) {
-      console.error(err.response.data);
+      console.error(err);
     }
   };
 

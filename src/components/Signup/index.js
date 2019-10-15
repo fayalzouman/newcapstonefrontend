@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import {Calendar} from 'react-widgets/lib/Calendar'
+import authStore from "../store/authStore";
 
 class Signup extends Component {
   state = {
@@ -12,7 +13,7 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    alert("SIGNUP: CONNECT ME!");
+    authStore.signup(this.state);
   };
 
   // const calendar  = ReactWidgets;
