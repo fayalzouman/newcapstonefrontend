@@ -20,7 +20,6 @@ class SchoolList extends Component {
     return (
       <div>
         <h3>Schools</h3>
-        {/* <SearchBar store={authorStore} /> */}
         <div className="row">{schoolCards}</div>
       </div>
     );

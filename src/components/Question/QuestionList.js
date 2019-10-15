@@ -26,12 +26,11 @@ class QuestionList extends Component {
   }
 
   render() {
-    if (questionStore.loading) {
+    if (!questionStore.questions) {
       return <Loading />;
     }
     // call the questionsfetch method and pass it the id
     console.log(questionStore.questions);
-
     const questionCards = questionStore.questions.map(question => (
       <QuestionCard key={question.id} question={question} />
     ));

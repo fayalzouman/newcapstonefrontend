@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
+import authStore from "../store/authStore";
 
 class Login extends Component {
   state = {
@@ -10,9 +12,10 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   handleSubmit = event => {
     event.preventDefault();
-    alert("LOGIN: CONNECT ME!");
+    authStore.login(this.state, this.props.history);
   };
   render() {
+    if (authStore.user) return <Redirect to="/profile" />;
     const { username, password } = this.state;
     return (
       <form onSubmit={this.handleSubmit} className="form-inline">
