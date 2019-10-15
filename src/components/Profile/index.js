@@ -15,20 +15,24 @@ class Profile extends Component {
   }
 
   render() {
-    if (!authStore.user) return <Redirect to="/login" />;
-    if (profileStore.loading) {
-      return <Loading />;
-    }
+    // if (!authStore.user) return <Redirect to="/login" />;
+    // if (profileStore.loading) {
+    //   return <Loading />;
+    // }
 
     const profile = profileStore.profile;
     console.log(profile);
+    console.log(authStore.checkForToken());
+
     return (
       <div>
         <div>
-          <h1>{profile.username}</h1>
+          <img src={profile.image} className="img-responsive" alt="tag" />
         </div>
         <div>
-          <img src={profile.image} className="img-responsive" alt="tag" />
+          <h1>{profile.username}</h1>
+          <h1>{profile.courses_taken}</h1>
+          <h1>{profile.points}</h1>
         </div>
       </div>
     );

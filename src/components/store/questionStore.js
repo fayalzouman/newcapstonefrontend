@@ -1,17 +1,21 @@
 import { decorate, observable, computed } from "mobx";
 
 import { instance } from "./instance";
-
+import ProfileStore from "./profileStore";
 class QuestionStore {
   questions = [];
-  points = 0;
   loading = true;
 
   calculatePoints = async (obj, history) => {
-    obj.points = obj.points + this.points;
-    const res = await instance.post(`profileupdate/`, obj);
-    this.points = res.data.points;
-    history.replace("/profile");
+    try {
+      alert("hi");
+      obj.points = obj.points + ProfileStore.points;
+      const res = await instance.put(`profile/update/`, obj);
+      ProfileStore.points = res.data.points;
+      history.replace("/profile");
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   fetchQuestionsAnswers = async subjectID => {

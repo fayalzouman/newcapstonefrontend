@@ -7,10 +7,10 @@ class AuthStore {
 
   setUser = token => {
     if (token) {
-      localStorage.setItem("myToken", token);
-      instance.defaults.headers.common.Authorization = `jwt ${token}`;
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       const decodedUser = jwt_decode(token);
       this.user = decodedUser;
+      localStorage.setItem("myToken", token);
       ProfileStore.fetchProfile();
     } else {
       delete instance.defaults.headers.common.Authorization;
@@ -19,13 +19,13 @@ class AuthStore {
     }
   };
 
-  getProfile = async profile => {};
+  // getProfile = async profile => {};
 
   login = async (userData, history) => {
     try {
       const res = await instance.post("login/", userData);
       const user = res.data;
-      this.setUser(user.token);
+      this.setUser(user.access);
       history.replace("/profile");
     } catch (err) {
       console.error(err);
@@ -38,7 +38,7 @@ class AuthStore {
       // const res = await axios.post({ instance }, userData);
       const user = res.data;
       //this.user = jwt_decode(user.token);
-      this.setUser(user.token);
+      this.setUser(user.access);
       this.props.history.replace("/");
       console.log("[sign up from appstore] done");
     } catch (err) {

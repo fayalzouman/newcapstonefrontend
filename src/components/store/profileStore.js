@@ -5,12 +5,14 @@ class ProfileStore {
   profile = "";
   loading = true;
   errors = null;
+  points = 0;
 
   fetchProfile = async () => {
     try {
-      const res = await instance.get("/profile");
+      const res = await instance.get("profile/");
       const profile = res.data;
       this.profile = profile;
+      this.points = profile.points;
       this.loading = false;
     } catch (err) {
       console.error(err);
