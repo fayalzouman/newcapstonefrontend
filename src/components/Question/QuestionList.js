@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import {
+  Card,
+  Question,
+  Form,
+  Row,
+  Col,
+  OptionRow,
+  Button
+} from "react-bootstrap";
 
 // Components
 import QuestionCard from "./QuestionCard";
@@ -30,8 +39,14 @@ class QuestionList extends Component {
     return (
       <div>
         <h3>Questions</h3>
-
         <div className="row">{questionCards}</div>
+        <Button variant="primary" type="submit" onClick="handleSubmit">
+          Submit
+        </Button>
+        {/* handleSubmit = event => {
+    event.preventDefault();
+    questionstore.postCard(this.state); */}
+        }
       </div>
     );
   }
