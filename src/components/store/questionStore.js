@@ -10,7 +10,7 @@ class QuestionStore {
   fetchQuestionsAnswers = async subjectID => {
     console.log(subjectID);
     try {
-      const res = await instance.get(`questions/${subjectID}/`);
+      const res = await instance.get(`questionlist/${subjectID}/`);
       const subject = res.data;
       this.questions = subject.questions;
       this.loading = false;

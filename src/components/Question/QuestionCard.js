@@ -1,16 +1,30 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import { Card, Question, Form, Row, Col, OptionRow } from "react-bootstrap";
+import {
+  Card,
+  Question,
+  Form,
+  Row,
+  Col,
+  OptionRow,
+  Button
+} from "react-bootstrap";
 import questionStore from "../store/questionStore";
 
 class QuestionCard extends Component {
+  state = {
+    counter: 0
+  };
   handleSelect = (event, answer) => {
     if (answer.is_correct) {
-      alert("Do something when right");
-    } else {
-      alert("do something or nothing when wrong");
+      let newValue = this.state.counter + 1;
+      this.setState({ counter: newValue });
     }
-    console.log(event.target.value);
+    axios.post(
+      "http://127.0.0.1:8000/questionlist/<int:subject_id>/",
+      newValue
+    );
   };
 
   render() {
