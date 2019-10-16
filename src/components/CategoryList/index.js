@@ -6,6 +6,7 @@ import CategoryCard from "./CategoryCard";
 // Store
 import categoriesStore from "../store/categoriesStore";
 import Loading from "../../Loading";
+import { Container } from "react-bootstrap";
 
 const CategoryList = props => {
   // vfetch id from the url and pass it to fetchCategories
@@ -19,11 +20,13 @@ const CategoryList = props => {
   ));
 
   return (
-    <div>
-      <h3>Categories</h3>
-      {/* <SearchBar store={authorStore} /> */}
-      <div className="row">{categoryCards}</div>
-    </div>
+    <Container style={{ backgroundColor: "white", padding: "20px" }}>
+      <div>
+        <h3 style={{ color: "green", textAlign: "center" }}>Categories</h3>
+        {/* <SearchBar store={authorStore} /> */}
+        <div className="row">{categoryCards}</div>
+      </div>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { Container } from "react-bootstrap";
 
 // Components
 import SchoolCard from "./SchoolCard";
@@ -18,10 +19,12 @@ class SchoolList extends Component {
       <SchoolCard key={school.id} school={school} />
     ));
     return (
-      <div>
-        <h3>Schools</h3>
-        <div className="row">{schoolCards}</div>
-      </div>
+      <Container style={{ backgroundColor: "white", padding: "20px" }}>
+        <div>
+          <h3 style={{ color: "green", textAlign: "center" }}>Schools</h3>
+          <div className="row">{schoolCards}</div>
+        </div>
+      </Container>
     );
   }
 }

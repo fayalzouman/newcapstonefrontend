@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { Container } from "react-bootstrap";
 
 // Components
 import SubjectCard from "./SubjectCard";
@@ -21,10 +22,12 @@ class SubjectList extends Component {
     ));
 
     return (
-      <div>
-        <h3>Subjects</h3>
-        <div className="row">{subjectCards}</div>
-      </div>
+      <Container style={{ backgroundColor: "white", padding: "20px" }}>
+        <div>
+          <h3 style={{ color: "green", textAlign: "center" }}>Subjects</h3>
+          <div className="row">{subjectCards}</div>
+        </div>
+      </Container>
     );
   }
 }
