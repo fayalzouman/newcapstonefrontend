@@ -34,12 +34,12 @@ class AuthStore {
 
   signup = async (userData, history) => {
     try {
-      const res = await instance.post("register/", userData);
+      const res = await instance.post("signup/", userData);
       // const res = await axios.post({ instance }, userData);
       const user = res.data;
       //this.user = jwt_decode(user.token);
       this.setUser(user.access);
-      this.props.history.replace("/");
+      history.replace("profile/");
       console.log("[sign up from appstore] done");
     } catch (err) {
       console.error(err);
