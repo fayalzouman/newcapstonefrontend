@@ -8,7 +8,6 @@ class QuestionStore {
 
   calculatePoints = async (obj, history) => {
     try {
-      alert("hi");
       obj.points = obj.points + ProfileStore.points;
       const res = await instance.put(`profile/update/`, obj);
       ProfileStore.points = res.data.points;

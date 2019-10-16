@@ -10,17 +10,23 @@ class CategoriesStore {
   loading = true;
   subject = null;
 
-  fetchSchoolByID = schoolID => {
+  fetchSchoolByID = async schoolID => {
     this.school = this.schools.find(school => +school.id === +schoolID);
+    // const res = await instance.get(`schoollist/`);
   };
 
-  fetchSubjectByID = subjectID => {
-    this.subject = this.subjects.find(subject => +subject.id === +subjectID);
+  fetchSubjectByID = async subjectID => {
+    try {
+      const res = await instance.get(`subjectdetail/${subjectID}/`);
+      this.subject = res.data;
+    } catch (error) {
+      console.error(error.response.data);
+    }
   };
 
   fetchSchools = async () => {
     try {
-      const res = await instance.get("schoollist/");
+      const res = await instance.get(`schoollist/`);
       const schools = res.data;
       this.schools = schools;
       this.loading = false;

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { Container } from "react-bootstrap";
+
 import {
   Card,
   Question,
@@ -51,15 +53,17 @@ class QuestionList extends Component {
     ));
 
     return (
-      <div>
-        <h3>Questions</h3>
+      <Container style={{ padding: "20px" }}>
+        <div>
+          <h3 style={{ color: "green", textAlign: "center" }}>Questions</h3>
 
-        <div className="row">{questionCards}</div>
-        <h3>Points: {this.state.points}</h3>
-        <Button variant="primary" onClick={this.handleSubmit}>
-          Submit
-        </Button>
-      </div>
+          <div className="row">{questionCards}</div>
+          <h3>Points: {this.state.points}</h3>
+          <Button variant="primary" onClick={this.handleSubmit}>
+            Submit
+          </Button>
+        </div>
+      </Container>
     );
   }
 }

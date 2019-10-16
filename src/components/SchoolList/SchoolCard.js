@@ -8,7 +8,7 @@ function SchoolCard({ school }) {
         <div className="image">
           <img className="card-img-top img-fluid" src={school.imageUrl} />
         </div>
-        <div className="card-body"></div>
+        <div className="card-body">{school.school_name}</div>
       </Link>
     </div>
   );

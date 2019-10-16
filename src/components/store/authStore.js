@@ -46,6 +46,11 @@ class AuthStore {
     }
   };
 
+  logout = history => {
+    this.setUser();
+    history.replace("/login");
+  };
+
   checkForToken = () => {
     const token = localStorage.getItem("myToken");
     if (token) {
