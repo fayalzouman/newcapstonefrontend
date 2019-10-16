@@ -26,7 +26,9 @@ import authStore from "../store/authStore";
 class Signup extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    first_name: "",
+    last_name: ""
   };
 
   handleChange = event =>
@@ -34,7 +36,7 @@ class Signup extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    authStore.signup(this.state);
+    authStore.signup(this.state, this.props.history);
   };
 
   // const calendar  = ReactWidgets;
@@ -62,14 +64,26 @@ class Signup extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="age">Age</label>
+                  <label htmlFor="first_name">First Name</label>
                   <input
-                    type="age"
+                    type="text"
+                    className="form-control"
+                    id="first_name"
+                    // value={Calendar}
+                    name="first_name"
+                    placeholder="First Name"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="last_name">Last Name</label>
+                  <input
+                    type="text"
                     className="form-control"
                     id="age"
                     // value={Calendar}
-                    name="age"
-                    placeholder="Age"
+                    name="last_name"
+                    placeholder="Last Name"
                     onChange={this.handleChange}
                   />
                 </div>

@@ -11,7 +11,7 @@ class AnswerStore {
       const res = await instance.post("answer/create/", answerData);
       const as = res.data;
       console.log("response of creating answer", as);
-      history.replace(`/questionlist/${answerData.question}/`);
+      history.replace(`questionlist/${answerData.question}/`);
     } catch (err) {
       console.error(err.response);
     }
