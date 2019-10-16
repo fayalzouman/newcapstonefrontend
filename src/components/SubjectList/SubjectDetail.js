@@ -51,7 +51,7 @@ class SubjectDetail extends Component {
             to={{
               pathname: "/createquestion",
               state: {
-                subjectID: this.props.match.params.subjectID
+                subjectID: this.props.match.params.subjectdetailID
               }
             }}
           >
