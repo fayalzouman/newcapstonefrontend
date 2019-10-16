@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import { Container } from "react-bootstrap";
 
-
 // Components
 import SubjectCard from "./SubjectCard";
 import categoriesStore from "../store/categoriesStore";
@@ -26,7 +25,6 @@ class SubjectList extends Component {
     ));
 
     return (
-
       <div>
         <h3>Subjects</h3>
         <div className="row">{subjectCards}</div>
@@ -43,13 +41,12 @@ class SubjectList extends Component {
         {/* Link that will take u to the create subject page sending it the categoryid in this format categoryID */}
       </div>
 
-      <Container style={{ backgroundColor: "white", padding: "20px" }}>
-        <div>
-          <h3 style={{ color: "green", textAlign: "center" }}>Subjects</h3>
-          <div className="row">{subjectCards}</div>
-        </div>
-      </Container>
-
+      // <Container style={{ backgroundColor: "white", padding: "20px" }}>
+      //   <div>
+      //     <h3 style={{ color: "green", textAlign: "center" }}>Subjects</h3>
+      //     <div className="row">{subjectCards}</div>
+      //   </div>
+      // </Container>
     );
   }
 }
