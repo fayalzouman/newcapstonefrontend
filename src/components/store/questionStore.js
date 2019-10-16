@@ -26,6 +26,22 @@ class QuestionStore {
       console.log(error);
     }
   };
+  postForm = async (questionData, history) => {
+    try {
+      const res = await instance.post("question/create/", questionData, {
+        Authorization:
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTcxMjg2NzM1LCJqdGkiOiI1MTExNGNmMDk3ZGM0MDkwYWM4ZWQwY2NjN2YwOWNjNyIsInVzZXJfaWQiOjF9.vCheKvkWh5o8VeZYwEg39FN9VGh6itPg-AluIweCn94"
+      });
+      const qs = res.data;
+      console.log("response of creating", qs);
+      history.replace({
+        pathname: `/createanswer`,
+        state: { subject: questionData.subject, question: qs.id }
+      });
+    } catch (err) {
+      console.error(err.response);
+    }
+  };
 }
 
 decorate(QuestionStore, {

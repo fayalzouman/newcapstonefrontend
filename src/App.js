@@ -11,6 +11,9 @@ import Questionlist from "./components/Question/QuestionList";
 import CategoryList from "./components/CategoryList";
 import SubjectList from "./components/SubjectList/index";
 import SubjectDetail from "./components/SubjectList/SubjectDetail";
+import CreateQuestion from "./components/forms/createQuestion";
+import CreateSubject from "./components/forms/createSubject";
+import CreateAnswer from "./components/forms/createAnswer";
 
 // Store
 import authStore from "./components/store/authStore";
@@ -32,9 +35,14 @@ function App() {
         path="/subjectdetail/:subjectdetailID?"
         component={SubjectDetail}
       />
+      <Route path="/createquestion" component={CreateQuestion} />
+      <Route path="/createsubject" component={CreateSubject} />
+      <Route path="/createanswer" component={CreateAnswer} />
     </Switch>
   );
 }
 // };
 
 export default withRouter(observer(App));
+
+//is admin =true for teacher when regestering
