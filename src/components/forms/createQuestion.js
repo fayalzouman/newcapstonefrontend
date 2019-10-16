@@ -8,8 +8,7 @@ import questionStore from "../store/questionStore";
 class CreateQuestioForm extends Component {
   state = {
     question: "",
-    subject: 1
-    // subject: this.props.subjectID
+    subject: this.props.location.state.subjectID
   };
 
   handleChange = event => {

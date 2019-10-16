@@ -6,15 +6,23 @@ import { Container } from "react-bootstrap";
 // Stores
 import authStore from "../store/authStore";
 import profileStore from "../store/profileStore";
+import categoiresStore from "../store/categoriesStore";
+
 import Loading from "../../Loading";
 
 class Profile extends Component {
-  handleSubmit = () => {
-    authStore.logout(this.props.history);
-  };
+
+  componentDidMount() {
+    if (authStore.user) {
+      profileStore.fetchProfile();
+      categoiresStore.fetchSubjects();
+    }
+  }
+
 
   render() {
     const profile = profileStore.profile;
+
 
     return (
       <Container style={{ backgroundColor: "white", padding: "20px" }}>

@@ -13,6 +13,7 @@ class SubjectDetail extends Component {
   async componentDidMount() {
     const subjectdetailID = this.props.match.params.subjectdetailID;
     await categoriesStore.fetchSubjectByID(subjectdetailID);
+    console.log(categoriesStore.subject);
   }
 
   render() {
@@ -38,18 +39,29 @@ class SubjectDetail extends Component {
               Learn More
             </a>
 
-            {/* <img
-              src={author.imageUrl}
-              className="img-thumbnail img-fluid"
-              alt={authorName} />*/}
-            <Link
-              to={`/questionlist/${subject.id}`}
-              className="btn btn-success my-2 my-sm-0"
-              style={{ margin: "auto" }}
-            >
-              Take Exam{" "}
-            </Link>
-          </div>
+
+          {/* <img
+            src={author.imageUrl}
+            className="img-thumbnail img-fluid"
+            alt={authorName} />*/}
+          <Link
+            to={`/questionlist/${subject.id}`}
+            className="btn btn-success my-2 my-sm-0"
+          >
+            Take Exam{" "}
+          </Link>
+          <Link
+            to={{
+              pathname: "/createquestion",
+              state: {
+                subjectID: this.props.match.params.subjectID
+              }
+            }}
+          >
+            Add Questions
+          </Link>
+          {/* Link that will take me to the createQuestion page then i will send the subject id in this format subjectID */}
+
         </div>
       </Container>
     );
