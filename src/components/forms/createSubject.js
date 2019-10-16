@@ -11,7 +11,7 @@ class CreateAnswerForm extends Component {
     teacher_name: "",
     description: "",
     image: null,
-    category_subject: 1
+    category_subject: this.props.location.state.categoryID
   };
 
   handleChange = event => {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
 
 // Components
 import SubjectCard from "./SubjectCard";
@@ -24,6 +25,17 @@ class SubjectList extends Component {
       <div>
         <h3>Subjects</h3>
         <div className="row">{subjectCards}</div>
+        <Link
+          to={{
+            pathname: "/createsubject",
+            state: {
+              categoryID: this.props.match.params.categoryID
+            }
+          }}
+        >
+          Add Subjects
+        </Link>
+        {/* Link that will take u to the create subject page sending it the categoryid in this format categoryID */}
       </div>
     );
   }

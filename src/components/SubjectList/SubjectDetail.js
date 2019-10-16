@@ -12,6 +12,7 @@ class SubjectDetail extends Component {
   async componentDidMount() {
     const subjectdetailID = this.props.match.params.subjectdetailID;
     await categoriesStore.fetchSubjectByID(subjectdetailID);
+    console.log(categoriesStore.subject);
   }
 
   render() {
@@ -38,6 +39,17 @@ class SubjectDetail extends Component {
           >
             Take Exam{" "}
           </Link>
+          <Link
+            to={{
+              pathname: "/createquestion",
+              state: {
+                subjectID: this.props.match.params.subjectID
+              }
+            }}
+          >
+            Add Questions
+          </Link>
+          {/* Link that will take me to the createQuestion page then i will send the subject id in this format subjectID */}
         </div>
       </div>
     );

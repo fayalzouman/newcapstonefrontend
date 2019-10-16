@@ -5,13 +5,16 @@ import { Redirect } from "react-router-dom";
 // Stores
 import authStore from "../store/authStore";
 import profileStore from "../store/profileStore";
+import categoiresStore from "../store/categoriesStore";
+
 import Loading from "../../Loading";
 
 class Profile extends Component {
   componentDidMount() {
-    // if (authStore.user) {
-    //   profileStore.fetchProfile();
-    // }
+    if (authStore.user) {
+      profileStore.fetchProfile();
+      categoiresStore.fetchSubjects();
+    }
   }
 
   render() {
@@ -21,8 +24,8 @@ class Profile extends Component {
     // }
 
     const profile = profileStore.profile;
-    console.log(profile);
-    console.log(authStore.checkForToken());
+    // console.log(profile);
+    // console.log(authStore.checkForToken());
 
     return (
       <div>
