@@ -25,8 +25,8 @@ class SubjectList extends Component {
     ));
 
     return (
-      <div>
-        <h3>Subjects</h3>
+      <Container>
+        <h3 className="text-center my-5">Subjects</h3>
         <div className="row">{subjectCards}</div>
         <Link
           to={{
@@ -35,11 +35,12 @@ class SubjectList extends Component {
               categoryID: this.props.match.params.categoryID
             }
           }}
+          className="btn btn-outline-info float-right"
         >
           Add Subjects
         </Link>
         {/* Link that will take u to the create subject page sending it the categoryid in this format categoryID */}
-      </div>
+      </Container>
 
       // <Container style={{ backgroundColor: "white", padding: "20px" }}>
       //   <div>

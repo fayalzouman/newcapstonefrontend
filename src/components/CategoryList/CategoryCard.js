@@ -4,7 +4,7 @@ import categoriesStore from "../store/categoriesStore";
 
 function CategoryCard({ category }) {
   return (
-    <div className="col-lg-4 col-md-6 col-12">
+    <div className="col-lg-4 col-md-6 col-12 card-deck">
       <Link to={`/subjectlist/${category.id}`} className="card">
         <div className="image">
           <img className="card-img-top img-fluid" src={category.image} />

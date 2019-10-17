@@ -19,6 +19,7 @@ import CreateAnswer from "./components/forms/createAnswer";
 import authStore from "./components/store/authStore";
 import categoriesStore from "./components/store/categoriesStore";
 import questionStore from "./components/store/questionStore";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
