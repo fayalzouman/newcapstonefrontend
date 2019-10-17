@@ -7,7 +7,7 @@ function CategoryCard({ category }) {
     <div className="col-lg-4 col-md-6 col-12">
       <Link to={`/subjectlist/${category.id}`} className="card">
         <div className="image">
-          <img className="card-img-top img-fluid" src={category.imageUrl} />
+          <img className="card-img-top img-fluid" src={category.image} />
         </div>
         <div className="card-body">{category.category}</div>
       </Link>
