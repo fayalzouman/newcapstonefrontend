@@ -21,7 +21,9 @@ class SchoolList extends Component {
     return (
       <Container style={{ backgroundColor: "white", padding: "20px" }}>
         <div>
-          <h3 style={{ color: "green", textAlign: "center" }}>Schools</h3>
+          <h3 style={{ color: "green", textAlign: "center" }}>
+            المرحله المدرسيه
+          </h3>
           <div className="row">{schoolCards}</div>
         </div>
       </Container>
