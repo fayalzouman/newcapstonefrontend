@@ -28,19 +28,19 @@ class QuestionCard extends Component {
       />
     ));
     return (
-      <Card className="col-3 m-5" style={{ width: "18rem" }}>
+      <Card
+        className="col-3 m-5"
+        style={{ width: "18rem", borderColor: "#428bca" }}
+      >
         <Card.Body>
           {/* <Card.Title>{question.id}</Card.Title> */}
-          <Card.Subtitle className="mb-2 text-muted">
-            Choose the correct answer!
+          <Card.Subtitle className="mb-2 text-muted text-right">
+            <h4 className="text-primary">اختر الاجابه الصحيحه</h4>
           </Card.Subtitle>
           <Card.Text>{question.question}</Card.Text>
         </Card.Body>
         <Form.Group as={Row}>
-          <Form.Label as="legend" as={Row}>
-            Choose me
-          </Form.Label>
-          <div className="row mt-2">
+          <div className="row mt-2 ml-3">
             <Col sm={10}>{answers}</Col>
           </div>
         </Form.Group>

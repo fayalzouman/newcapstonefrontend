@@ -8,9 +8,14 @@ function SubjectCard({ subject }) {
     <div className="col-lg-4 col-md-6 col-12 card-deck mb-5">
       <Link to={`/subjectdetail/${subject.id}`} className="card">
         <div className="image">
-          <img className="card-img-top img-fluid" src={subject.image} />
+          <img
+            className="card-img-top"
+            style={{ objectFit: "cover" }}
+            height="200px"
+            src={subject.image}
+          />
         </div>
-        <div className="card-body">{subject.subject_name}</div>
+        <h3 className="card-body text-right">{subject.subject_name}</h3>
       </Link>
     </div>
   );

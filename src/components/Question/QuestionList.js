@@ -55,13 +55,18 @@ class QuestionList extends Component {
     return (
       <Container style={{ padding: "20px" }}>
         <div>
-          <h3 style={{ color: "green", textAlign: "center" }}>Questions</h3>
-
+          <h1 className="text-success text-center ">الاسئلة</h1>
+          <h3 className="text-right">النقاط: {this.state.points}</h3>
           <div className="row">{questionCards}</div>
-          <h3>Points: {this.state.points}</h3>
-          <Button variant="primary" onClick={this.handleSubmit}>
-            Submit
-          </Button>
+          <div className="text-right">
+            <Button
+              variant="primary"
+              onClick={this.handleSubmit}
+              className="col-lg-3"
+            >
+              اضغط هنا
+            </Button>
+          </div>
         </div>
       </Container>
     );

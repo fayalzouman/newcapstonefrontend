@@ -22,9 +22,7 @@ const CategoryList = props => {
   return (
     <Container style={{ backgroundColor: "white", padding: "20px" }}>
       <div>
-        <h1 style={{ color: "green", textAlign: "center" }} className="mb-5">
-          Categories
-        </h1>
+        <h3 style={{ color: "green", textAlign: "center" }}>التصنيفات</h3>
         {/* <SearchBar store={authorStore} /> */}
         <div className="row">{categoryCards}</div>
       </div>

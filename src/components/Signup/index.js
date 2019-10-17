@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import classnames from "classnames";
+import { Link, Redirect } from "react-router-dom";
+
 // reactstrap components
 import {
   Button,
@@ -28,7 +30,8 @@ class Signup extends Component {
     username: "",
     password: "",
     first_name: "",
-    last_name: ""
+    last_name: "",
+    is_teacher: false
   };
 
   handleChange = event =>
@@ -99,10 +102,29 @@ class Signup extends Component {
                     onChange={this.handleChange}
                   />
                 </div>
-
+                <div className="form-group">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    name="is_teacher"
+                    id="exampleCheck1"
+                    style={{ color: "green" }}
+                    checked={this.state.is_teacher}
+                    value={this.state.is_teacher}
+                    onClick={event =>
+                      this.setState({
+                        [event.target.name]: !this.state[event.target.name]
+                      })
+                    }
+                  />
+                  <label className="form-check-label" for="exampleCheck1">
+                    Are you a teacher?
+                  </label>
+                </div>
                 <button type="submit" className="btn btn-primary">
                   Signup
                 </button>
+                <div></div>
               </form>
             </div>
           </div>

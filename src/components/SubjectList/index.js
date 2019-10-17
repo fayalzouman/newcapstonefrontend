@@ -8,6 +8,7 @@ import { Container } from "react-bootstrap";
 // Components
 import SubjectCard from "./SubjectCard";
 import categoriesStore from "../store/categoriesStore";
+import profileStore from "../store/profileStore";
 import Loading from "../../Loading";
 // Store
 
@@ -25,21 +26,28 @@ class SubjectList extends Component {
     ));
 
     return (
-      <Container>
-        <h3 className="text-center my-5">Subjects</h3>
-        <div className="row">{subjectCards}</div>
-        <Link
-          to={{
-            pathname: "/createsubject",
-            state: {
-              categoryID: this.props.match.params.categoryID
-            }
-          }}
-          className="btn btn-outline-info float-right"
-        >
-          Add Subjects
-        </Link>
-        {/* Link that will take u to the create subject page sending it the categoryid in this format categoryID */}
+      <Container style={{ backgroundColor: "white", padding: "20px" }}>
+        <div>
+          <h1 className="text-success text-center mb-5">المواضيع</h1>
+          <div className="card p-5">
+            <div className="row">{subjectCards}</div>
+            {profileStore.profile.is_teacher && (
+              <Link
+                to={{
+                  pathname: "/createsubject",
+                  state: {
+                    categoryID: this.props.match.params.categoryID
+                  }
+                }}
+                className="btn btn-primary my-2 my-sm-0 mr-2 col-lg-3"
+              >
+                Add Subjects
+              </Link>
+            )}
+          </div>
+
+          {/* Link that will take u to the create subject page sending it the categoryid in this format categoryID */}
+        </div>
       </Container>
 
       // <Container style={{ backgroundColor: "white", padding: "20px" }}>

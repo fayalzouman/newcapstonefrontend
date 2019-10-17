@@ -7,7 +7,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import authStore from "../store/authStore";
 import profileStore from "../store/profileStore";
 import categoiresStore from "../store/categoriesStore";
-
+import Signup from "../Signup";
 import Loading from "../../Loading";
 
 class Profile extends Component {
@@ -15,6 +15,8 @@ class Profile extends Component {
     if (authStore.user) {
       profileStore.fetchProfile();
       categoiresStore.fetchSubjects();
+    } else {
+      return <Signup />;
     }
   }
 
