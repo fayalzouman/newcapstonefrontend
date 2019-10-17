@@ -7,22 +7,21 @@ import { Container } from "react-bootstrap";
 import authStore from "../store/authStore";
 import profileStore from "../store/profileStore";
 import categoiresStore from "../store/categoriesStore";
-
+import Signup from "../Signup";
 import Loading from "../../Loading";
 
 class Profile extends Component {
-
   componentDidMount() {
     if (authStore.user) {
       profileStore.fetchProfile();
       categoiresStore.fetchSubjects();
+    } else {
+      return <Signup />;
     }
   }
 
-
   render() {
     const profile = profileStore.profile;
-
 
     return (
       <Container style={{ backgroundColor: "white", padding: "20px" }}>
@@ -30,6 +29,7 @@ class Profile extends Component {
           <div>
             <img
               src={"https://media.giphy.com/media/3bc9YL28QWi3pYzi1p/giphy.gif"}
+              justifyContent="center"
               className="img-responsive"
               alt="tag"
               style={{ alignSelf: "center" }}
@@ -37,7 +37,7 @@ class Profile extends Component {
           </div>
           <div>
             <h1 style={{ color: "green", textAlign: "center" }}>
-              {profile.username}
+              {profile.first_name}
             </h1>
             <h3 style={{ color: "blue", textAlign: "center" }}>
               Courses taken: {profile.courses_taken}

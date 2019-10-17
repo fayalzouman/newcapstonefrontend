@@ -25,21 +25,24 @@ class SubjectList extends Component {
     ));
 
     return (
-      <div>
-        <h3>Subjects</h3>
-        <div className="row">{subjectCards}</div>
-        <Link
-          to={{
-            pathname: "/createsubject",
-            state: {
-              categoryID: this.props.match.params.categoryID
-            }
-          }}
-        >
-          Add Subjects
-        </Link>
-        {/* Link that will take u to the create subject page sending it the categoryid in this format categoryID */}
-      </div>
+      <Container style={{ backgroundColor: "white", padding: "20px" }}>
+        <div>
+          <h3 style={{ color: "green", textAlign: "center" }}>Subjects</h3>
+          <div className="row">{subjectCards}</div>
+          <Link
+            to={{
+              pathname: "/createsubject",
+              state: {
+                categoryID: this.props.match.params.categoryID
+              }
+            }}
+            className="btn btn-primary my-2 my-sm-0 mr-2"
+          >
+            Add Subjects
+          </Link>
+          {/* Link that will take u to the create subject page sending it the categoryid in this format categoryID */}
+        </div>
+      </Container>
 
       // <Container style={{ backgroundColor: "white", padding: "20px" }}>
       //   <div>
